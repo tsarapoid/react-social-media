@@ -9,15 +9,6 @@ const App = () => {
   const [user, setUser] = useState({})
   const searchInput = useRef()
   
-  useEffect(() => {
-    getUser()
-  }, [])
-  
-  function handleClearInput(){
-    searchInput.current.value = ''
-    searchInput.current.focus()
-  }
-
   async function getUser() {
     const response = await fetch(`${baseUrl}${userName}`)
     const data = await response.json()
@@ -28,6 +19,11 @@ const App = () => {
   useEffect(() => {
     getUser()
   }, [])
+  
+  function handleClearInput(){
+    searchInput.current.value = ''
+    searchInput.current.focus()
+  }
 
 
   return (
