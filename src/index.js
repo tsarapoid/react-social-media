@@ -2,30 +2,23 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 
+const endpoint = 'https://api.github.com/users/codeartistryio'
+
 const App = () => {
   
-  const [mousePosition, setMousePosition] = useState({ x:0, y:0 })
+  const [user, setUser] = useState({})
 
   useEffect(() => {
-    document.addEventListener('mousemove', handleMouseMove)
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove)
-    }
+    fetch(endpoint)
+      .then(response => response.json())
+      .then(data => setUser(data))
   }, [])
-
-  function handleMouseMove(event) {
-    setMousePosition({ x: event.pageX, y: event.pageX })
-  }
-
-
-
-
 
   return (
     <div>
-      <p>
-        X: {mousePosition.x}, Y: {mousePosition.y}
-      </p>
+      <h2>{user.name}</h2>
+      <p>{user.bio}</p>
+      <img alt='avatar' src={user.avatar_url} style={{height: 300}}/>
     </div>
   )
 }
@@ -33,9 +26,3 @@ const App = () => {
 
 const rootNode = document.getElementById('root')
 ReactDOM.render(<App/>, rootNode)
-
-function NewPage() {
-  return <div>new page</div>
-}
-
-setTimeout(() => ReactDOM.render(<NewPage/>, rootNode), 2000)
