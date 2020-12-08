@@ -9,10 +9,13 @@ const App = () => {
   const [user, setUser] = useState({})
 
   useEffect(() => {
-    fetch(endpoint)
-      .then(response => response.json())
-      .then(data => setUser(data))
+    async function getUser() {
+    const response = await fetch(endpoint)
+    const data = await response.json()
+    setUser(data)}
+    getUser()
   }, [])
+
 
   return (
     <div>
