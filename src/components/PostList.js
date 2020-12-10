@@ -1,14 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { Fragment, useState, useEffect, useRef } from 'react'
+import Post from './Post'
 
-
-const PostList = () => {
-
-
-  return (
-    <div>
-      login
-    </div>
-  )
+const PostList = ({ posts }) => {
+  return posts.map((post, index) => (<Post key={index} {...post} />))
 }
 
 export default PostList
