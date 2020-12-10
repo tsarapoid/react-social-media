@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 
-const CreatePost = ({ user, setPosts, posts }) => {
+const CreatePost = ({ user, handleAddPost }) => {
   const [content, setContent] = useState('')
   const [image, setImage] = useState(null)
   const imageInputRef = useRef()
@@ -9,8 +9,9 @@ const CreatePost = ({ user, setPosts, posts }) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const post = {content, image, user}
-    const newPosts = [post, ...posts]
-    setPosts(prevPosts => ([post, ...prevPosts]))
+    handleAddPost(post)
+/*     const newPosts = [post, ...posts]
+    setPosts(prevPosts => ([post, ...prevPosts])) */
     setContent('')
     imageInputRef.current.value = ''
   }
