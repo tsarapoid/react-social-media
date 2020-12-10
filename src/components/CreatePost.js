@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react'
 
-
 const CreatePost = ({ user, handleAddPost }) => {
   const [content, setContent] = useState('')
   const [image, setImage] = useState(null)
