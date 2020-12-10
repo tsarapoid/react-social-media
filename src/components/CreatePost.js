@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 const CreatePost = ({ user, setPosts, posts }) => {
   const [content, setContent] = useState('')
   const [image, setImage] = useState(null)
+  const imageInputRef = useRef()
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -11,6 +12,7 @@ const CreatePost = ({ user, setPosts, posts }) => {
     const newPosts = [post, ...posts]
     setPosts(newPosts)
     setContent('')
+    imageInputRef.current.value = ''
   }
 
   return (
@@ -26,6 +28,7 @@ const CreatePost = ({ user, setPosts, posts }) => {
         <input
           type='file'
           onChange={event => setImage(event.target.files[0])}
+          ref={imageInputRef}
         />
         <button type='submit'> Submit Post </button>
       </form>
