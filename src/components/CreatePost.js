@@ -10,7 +10,7 @@ const CreatePost = ({ user, setPosts, posts }) => {
     event.preventDefault()
     const post = {content, image, user}
     const newPosts = [post, ...posts]
-    setPosts(newPosts)
+    setPosts(prevPosts => ([post, ...prevPosts]))
     setContent('')
     imageInputRef.current.value = ''
   }
