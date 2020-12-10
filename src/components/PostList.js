@@ -1,8 +1,7 @@
-import React, { Fragment, useState, useEffect, useRef } from 'react'
 import Post from './Post'
 
-const PostList = ({ posts }) => {
-  return posts.map((post, index) => (<Post key={index} {...post} />))
+const PostList = ({ posts, user }) => {
+  return posts.map((post, index) => (<Post currentUser={user} key={index} {...post} />))
 }
 
 export default PostList

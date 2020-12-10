@@ -1,7 +1,9 @@
-import React, { Fragment, useState, useEffect, useRef } from 'react'
+import { Fragment } from 'react'
 
+const Post = ({ image, content, user, currentUser }) => {
 
-const Post = ({ image, content, user }) => {
+  const isCurrentUser = currentUser === user
+
   return <Fragment>
     {image && (
       <img 
@@ -11,7 +13,7 @@ const Post = ({ image, content, user }) => {
       />
     )}
     <p>{content}</p>
-    <div>{user}</div>
+    <div style={{color: 'green'}}>{user}</div>
   </Fragment>
 }
 

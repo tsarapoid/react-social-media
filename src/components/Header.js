@@ -1,8 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
-
-
 const Header = ({ user, setUser }) => {
-
 
   return (
     <div>
