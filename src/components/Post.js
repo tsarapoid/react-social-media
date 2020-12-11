@@ -1,9 +1,14 @@
 import { Fragment, useContext } from 'react'
-import { UserContext } from '../App'
+import { UserContext, PostContext } from '../App'
 
-const Post = ({ image, content, user }) => {
+const Post = ({ image, content, user, id }) => {
   const currentUser = useContext(UserContext)
+  const { dispatch } = useContext(PostContext)
   const isCurrentUser = currentUser === user
+
+  const handleDeletePost = () => {
+    dispatch({ type: 'DELETE_POST', payload: { id }})
+  }
 
   return (
     <Fragment>
@@ -16,6 +21,9 @@ const Post = ({ image, content, user }) => {
       )}      
       <p>{content}</p>
       <div style={{color: isCurrentUser && 'green'}}>{user}</div>
+      <div>
+        {isCurrentUser && <button onClick={handleDeletePost}>Delete</button>}
+      </div>
     </Fragment>
   )
 
